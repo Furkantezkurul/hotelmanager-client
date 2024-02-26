@@ -34,6 +34,13 @@ const Home = () => {
     console.log("clicked");
     navigate('/add-hotelzimmer');
   };
+
+
+  //navigate to the room you want to edit, passing zimmerNummer as state
+  const handleEditClick = (zimmerNummer) => {
+  navigate('/edit-hotelzimmer', { state: { zimmerNummer } });
+};
+
   
 
   return (
@@ -63,7 +70,7 @@ const Home = () => {
               {zimmer.besetzt ? <text>Besetzt</text> : <text>Frei</text>  } 
             </span>
            
-            <button  className="bg-gray-200 p-2 rounded text-gray-700 w-10 max-w-xs">  <FontAwesomeIcon icon={faPenToSquare} /></button>
+            <button onClick={() => handleEditClick(zimmer.zimmerNummer)}  className="bg-gray-200 p-2 rounded text-gray-700 w-10 max-w-xs">  <FontAwesomeIcon icon={faPenToSquare} /></button>
           </div>
         ))}
       </div>
