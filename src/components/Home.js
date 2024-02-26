@@ -3,8 +3,12 @@ import api from '../api/axiosConfig';
 import '../index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
   const [hotelzimmer, setHotelzimmer] = useState([]);
 
   //Gets alls Hotelzimmer and sorts them by their number 
@@ -24,6 +28,13 @@ const Home = () => {
   useEffect(() => {
     getHotelzimmer();
   }, []);
+
+  //navigate to AddHotelzimmer onclick
+  const handleAddClick = () => {
+    console.log("clicked");
+    navigate('/add-hotelzimmer');
+  };
+  
 
   return (
     <div className="container mx-auto p-4">
@@ -52,11 +63,11 @@ const Home = () => {
               {zimmer.besetzt ? <text>Besetzt</text> : <text>Frei</text>  } 
             </span>
            
-            <button className="bg-gray-200 p-2 rounded text-gray-700 w-10 max-w-xs">  <FontAwesomeIcon icon={faPenToSquare} /></button>
+            <button  className="bg-gray-200 p-2 rounded text-gray-700 w-10 max-w-xs">  <FontAwesomeIcon icon={faPenToSquare} /></button>
           </div>
         ))}
       </div>
-      <button className="fixed bottom-4 right-40 bg-blue-500 text-white p-4 rounded-2xl shadow-lg text-xl">+</button>
+      <button onClick={handleAddClick} className="fixed bottom-4 right-40 bg-blue-500 text-white p-4 rounded-2xl shadow-lg text-xl">+</button>
     </div>
   );
 };
