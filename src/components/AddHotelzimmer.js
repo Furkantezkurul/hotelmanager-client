@@ -16,27 +16,27 @@ const AddHotelzimmer = () => {
     e.preventDefault();
     setError(''); // Clear any existing errors
     try {
-        const response = await api.post('/api/v1/hotelzimmer', {
-            zimmerNummer,
-            zimmerGroesse,
-            minibar,
-            besetzt
-        });
-        console.log(response.data);
-        navigate('/');
-        // Redirect to home screen if successful
-        // navigate('/'); // Uncomment this if you're using react-router
+      const response = await api.post('/api/v1/hotelzimmer', {
+        zimmerNummer,
+        zimmerGroesse,
+        minibar,
+        besetzt
+      });
+      console.log(response.data);
+      navigate('/');
+      // Redirect to home screen if successful
+      // navigate('/'); // Uncomment this if you're using react-router
     } catch (error) {
-        console.error(error.response.data);
-        setError(error.response.data); // Set the error message from backend
-        // Display error message from backend to the user
+      console.error(error.response.data);
+      setError(error.response.data); // Set the error message from backend
+      // Display error message from backend to the user
     }
-};
+  };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto my-10 p-8 bg-white shadow rounded">
       <div className="mb-6">
-      {error && <div className="text-red-500">{error}</div>}
+        {error && <div className="text-red-500">{error}</div>}
         <label htmlFor="zimmerNummer" className="block mb-2 text-sm font-medium text-gray-900">Neus Zimmer</label>
         <input
           type="text"
@@ -52,33 +52,33 @@ const AddHotelzimmer = () => {
       <div className="mb-6">
         <span className="block mb-2 text-sm font-medium text-gray-900">Zimmergroesse:</span>
         <div className="flex justify-between mb-4">
-  {['Einzelzimmer', 'Doppelzimmer', 'Suite'].map((size) => {
-    let bgColor;
-    switch (size) {
-      case 'Einzelzimmer':
-        bgColor = 'bg-blue-200';
-        break;
-      case 'Doppelzimmer':
-        bgColor = 'bg-green-200';
-        break;
-      case 'Suite':
-        bgColor = 'bg-yellow-200';
-        break;
-      default:
-        bgColor = 'bg-gray-200';
-    }
-    return (
-      <button
-        type="button"
-        key={size}
-        onClick={() => setZimmerGroesse(size)}
-        className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${zimmerGroesse === size ? bgColor : 'bg-gray-200'} text-black`}
-      >
-        {size}
-      </button>
-    );
-  })}
-</div>
+          {['Einzelzimmer', 'Doppelzimmer', 'Suite'].map((size) => {
+            let bgColor;
+            switch (size) {
+              case 'Einzelzimmer':
+                bgColor = 'bg-blue-200';
+                break;
+              case 'Doppelzimmer':
+                bgColor = 'bg-green-200';
+                break;
+              case 'Suite':
+                bgColor = 'bg-yellow-200';
+                break;
+              default:
+                bgColor = 'bg-gray-200';
+            }
+            return (
+              <button
+                type="button"
+                key={size}
+                onClick={() => setZimmerGroesse(size)}
+                className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${zimmerGroesse === size ? bgColor : 'bg-gray-200'} text-black`}
+              >
+                {size}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="mb-6">
