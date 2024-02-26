@@ -33,21 +33,34 @@ const EditHotelzimmer = () => {
       fetchRoomDetails();
     }, [zimmerNummer]); 
   
-     const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
       e.preventDefault();
       setError(''); // Clear any existing errors
       try {
-        // Assuming you have a PUT endpoint to update the room details
-        const response = await api.put(`/api/v1/hotelzimmer/${zimmerNummer}`, {
-          ...zimmer,
-        });
-        console.log(response.data);
-        navigate('/');
+          // PUT endpoint to update the room details
+          const response = await api.put(`/api/v1/hotelzimmer/${zimmer.zimmerNummer}`, {
+              ...zimmer,
+          });
+          console.log(response.data);
+          navigate('/');
       } catch (error) {
-        console.error(error.response?.data);
-        setError(error.response?.data); // Set the error message from backend
+          console.error(error.response?.data);
+          setError(error.response?.data); // Display error from backend
       }
-    }; 
+  };
+
+  const handleDelete = async () => {
+    if (window.confirm("Sind Sie sich sicher, dass Sie dieses Zimmer löschen wollen?")) {
+      try {
+        await api.delete(`/api/v1/hotelzimmer/${zimmer.zimmerNummer}`);
+        navigate('/'); // Navigate back to the home page or another relevant page
+      } catch (error) {
+        console.error("Failed to delete the hotel room:", error);
+        setError(error.response?.data || "Failed to delete the hotel room. Please try again.");
+      }
+    }
+  };
+  
 
     if (zimmer.zimmerNummer === "") {
         return <div>Loading...</div>;
@@ -55,9 +68,8 @@ const EditHotelzimmer = () => {
   
 
     return (
-            <form className="max-w-lg mx-auto my-10 p-8 bg-white shadow rounded">
+            <form onSubmit={handleSubmit} className="max-w-lg mx-auto my-10 p-8 bg-white shadow rounded">
               {error && <div className="mb-4 text-red-500">{error}</div>}
-              
               <div className="mb-6">
                 <label htmlFor="zimmerNummer" className="block mb-2 text-sm font-medium text-gray-900">Zimmernummer</label>
                 <input
@@ -126,7 +138,7 @@ const EditHotelzimmer = () => {
               </div>
           
               <div className="flex justify-end">
-              <button
+              <button onClick={handleDelete}
         type="button"
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
       >
