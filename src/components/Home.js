@@ -140,7 +140,7 @@ const Home = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleAddClick} className="fixed bottom-4 right-40 bg-blue-500 text-white p-4 rounded-2xl shadow-lg text-xl">+</button>
+      <button onClick={handleAddClick} className="fixed bottom-4 right-40 bg-blue-500 text-white p-4 rounded-full shadow-lg text-xl">Neus Zimmer erstellen +</button>
     </div>
   );
 };
