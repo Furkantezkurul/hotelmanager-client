@@ -37,7 +37,7 @@ const AddHotelzimmer = () => {
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto my-10 p-8 bg-white shadow rounded">
       <div className="mb-6">
         {error && <div className="text-red-500">{error}</div>}
-        <label htmlFor="zimmerNummer" className="block mb-2 text-sm font-medium text-gray-900">Neus Zimmer</label>
+        <label htmlFor="zimmerNummer" className="block mb-2 text-sm font-medium text-gray-900">Neues Zimmer</label>
         <input
           type="text"
           id="zimmerNummer"
@@ -87,14 +87,14 @@ const AddHotelzimmer = () => {
           <button
             type="button"
             onClick={() => setMinibar(true)}
-            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${minibar ? 'bg-green-200 text-black' : 'bg-green-100 text-black'}`}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${minibar ? 'bg-green-300 text-black' : 'bg-green-100 text-black'}`}
           >
             Ja
           </button>
           <button
             type="button"
             onClick={() => setMinibar(false)}
-            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${!minibar ? 'bg-red-200 text-black' : 'bg-red-100 text-black'}`}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${!minibar ? 'bg-red-300 text-black' : 'bg-red-100 text-black'}`}
           >
             Nein
           </button>
@@ -107,14 +107,14 @@ const AddHotelzimmer = () => {
           <button
             type="button"
             onClick={() => setBesetzt(true)}
-            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${besetzt ? 'bg-green-200 text-black' : 'bg-green-100 text-black'}`}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${besetzt ? 'bg-green-300 text-black' : 'bg-green-100 text-black'}`}
           >
             Ja
           </button>
           <button
             type="button"
             onClick={() => setBesetzt(false)}
-            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${!besetzt ? 'bg-red-200 text-black' : 'bg-red-100 text-black'}`}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${!besetzt ? 'bg-red-300 text-black' : 'bg-red-100 text-black'}`}
           >
             Nein
           </button>

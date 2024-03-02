@@ -81,36 +81,52 @@ const EditHotelzimmer = () => {
         />
       </div>
 
-      <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900">Zimmergröße</label>
-        <div className="flex space-x-2">
-          {['Einzelzimmer', 'Doppelzimmer', 'Suite'].map((groesse) => (
-            <button
-              key={groesse}
-              type="button"
-              onClick={() => setZimmer({ ...zimmer, zimmerGroesse: groesse })}
-              className={`py-2 px-4 text-sm rounded-lg ${zimmer.zimmerGroesse === groesse ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-            >
-              {groesse}
-            </button>
-          ))}
+       <div className="mb-6">
+        <span className="block mb-2 text-sm font-medium text-gray-900">Zimmergroesse:</span>
+        <div className="flex justify-between mb-4">
+          {['Einzelzimmer', 'Doppelzimmer', 'Suite'].map((size) => {
+            let bgColor;
+            switch (size) {
+              case 'Einzelzimmer':
+                bgColor = 'bg-blue-200';
+                break;
+              case 'Doppelzimmer':
+                bgColor = 'bg-green-200';
+                break;
+              case 'Suite':
+                bgColor = 'bg-yellow-200';
+                break;
+              default:
+                bgColor = 'bg-gray-200';
+            }
+            return (
+              <button
+                type="button"
+                key={size}
+                 onClick={() => setZimmer({ ...zimmer, zimmerGroesse: size })}
+                className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${zimmer.zimmerGroesse === size ? bgColor : 'bg-gray-200'} text-black`}
+              >
+                {size}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900">Minibar</label>
-        <div className="flex space-x-2">
+        <span className="block mb-2 text-sm font-medium text-gray-900">Minibar?</span>
+        <div className="flex justify-between mb-4">
           <button
             type="button"
-            onClick={() => setZimmer({ ...zimmer, minibar: true })}
-            className={`py-2 px-4 text-sm rounded-lg ${zimmer.minibar ? 'bg-green-500 text-white' : 'bg-gray-200 text-black'}`}
+            onClick={() => setZimmer({...zimmer, minibar: true})}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${zimmer.minibar ? 'bg-green-300 text-black' : 'bg-green-100 text-black'}`}
           >
             Ja
           </button>
           <button
             type="button"
-            onClick={() => setZimmer({ ...zimmer, minibar: false })}
-            className={`py-2 px-4 text-sm rounded-lg ${!zimmer.minibar ? 'bg-red-500 text-white' : 'bg-gray-200 text-black'}`}
+            onClick={() => setZimmer({...zimmer, minibar: false})}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${!zimmer.minibar ? 'bg-red-300 text-black' : 'bg-red-100 text-black'}`}
           >
             Nein
           </button>
@@ -118,26 +134,25 @@ const EditHotelzimmer = () => {
       </div>
 
       <div className="mb-6">
-        <label className="block mb-2 text-sm font-medium text-gray-900">Besetzt</label>
-        <div className="flex space-x-2">
+        <span className="block mb-2 text-sm font-medium text-gray-900">Besetzt?</span>
+        <div className="flex justify-between mb-4">
           <button
             type="button"
             onClick={() => setZimmer({ ...zimmer, besetzt: true })}
-            className={`py-2 px-4 text-sm rounded-lg ${zimmer.besetzt ? 'bg-red-500 text-white' : 'bg-gray-200 text-black'}`}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${zimmer.besetzt ? 'bg-green-300 text-black' : 'bg-green-100 text-black'}`}
           >
             Ja
           </button>
           <button
             type="button"
             onClick={() => setZimmer({ ...zimmer, besetzt: false })}
-            className={`py-2 px-4 text-sm rounded-lg ${!zimmer.besetzt ? 'bg-green-500 text-white' : 'bg-gray-200 text-black'}`}
+            className={`py-2 px-4 text-sm font-medium rounded-lg transition-colors ${!zimmer.besetzt ? 'bg-red-300 text-black' : 'bg-red-100 text-black'}`}
           >
             Nein
           </button>
         </div>
       </div>
-
-      <div className="flex justify-end">
+      <div className="flex justify-between">
         <button onClick={handleDelete}
           type="button"
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
