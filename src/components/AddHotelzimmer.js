@@ -1,4 +1,5 @@
 // AddHotelzimmer.js
+// The page you land on after clicking on "Neues Zimmer erstellen" to create a new Room
 import React, { useState } from 'react';
 import api from '../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ const AddHotelzimmer = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  //Post new Zimmer to /api/v1/hotelzimmer when clicked on "Speichern"
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');

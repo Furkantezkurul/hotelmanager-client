@@ -1,3 +1,5 @@
+//Homes.js
+
 import React, { useState, useEffect } from 'react';
 import api from '../api/axiosConfig';
 import '../index.css';
@@ -35,6 +37,7 @@ const Home = () => {
     getHotelzimmer();
   }, []);
 
+  //Filters the resulted list based on the user settings 
   const filteredHotelzimmer = hotelzimmer
     .filter((zimmer) => zimmer.zimmerNummer.startsWith(searchQuery))
     .filter((zimmer) => roomTypeFilter ? zimmer.zimmerGroesse === roomTypeFilter : true)

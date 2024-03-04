@@ -1,4 +1,5 @@
 // EditHotelzimmer.js
+// The page you land on after clicking on the editbutton on the right hand side of a Room, to be able to edit or delet it
 import React, { useState, useEffect } from 'react';
 import api from '../api/axiosConfig';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -11,6 +12,7 @@ const EditHotelzimmer = () => {
   const location = useLocation();
   const zimmerNummer = location.state?.zimmerNummer;
 
+  //Fetches the roomdetails of the room you clicked on
   useEffect(() => {
     if (zimmerNummer) {
       const fetchRoomDetails = async () => {
@@ -25,6 +27,7 @@ const EditHotelzimmer = () => {
     }
   }, [zimmerNummer]);
 
+  // Edits the room details with the new configuration after clicking on "Speichern"
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -36,6 +39,7 @@ const EditHotelzimmer = () => {
     }
   };
 
+  // Deletes the room with the corresponing roomID after clicking on "Löschen"
   const handleDelete = async () => {
     if (window.confirm("Sind Sie sicher, dass Sie dieses Zimmer löschen möchten?")) {
       try {

@@ -1,4 +1,5 @@
 // Filter.js
+// Component at the top of the "Home-page" which enables the user to filer the resulted list of Hotelrooms
 import React from 'react';
 
 const Filter = ({ roomTypeFilter, setRoomTypeFilter, minibarFilter, setMinibarFilter, occupancyFilter, setOccupancyFilter }) => {

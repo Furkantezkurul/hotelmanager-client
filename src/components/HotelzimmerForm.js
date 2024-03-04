@@ -1,3 +1,6 @@
+//Hotelzimmerform.js
+//Reusable component used for Add- and EditHotelzimmer
+
 import React from 'react';
 
 const HotelzimmerForm = ({ zimmer, setZimmer, onSubmit, error, showDeleteButton, onDelete }) => {
@@ -7,7 +10,9 @@ const HotelzimmerForm = ({ zimmer, setZimmer, onSubmit, error, showDeleteButton,
 
   return (
     <form onSubmit={onSubmit} className="max-w-lg mx-auto my-10 p-8 bg-white shadow rounded">
+        {/* Shows error messsages at the top of the form */}
       {error && <div className="mb-4 text-red-500">{error}</div>}
+       {/* Input for Zimmernummer, readonly when editing a Room */}
       <div className="mb-6">
         <label htmlFor="zimmerNummer" className="block mb-2 text-sm font-medium text-gray-900">Zimmernummer</label>
         <input
@@ -20,6 +25,7 @@ const HotelzimmerForm = ({ zimmer, setZimmer, onSubmit, error, showDeleteButton,
         />
       </div>
 
+        {/* Selection of Roomsize */}
       <div className="mb-6">
         <label htmlFor="zimmerGroesse" className="block mb-2 text-sm font-medium text-gray-900">Zimmergröße</label>
         <select
@@ -34,6 +40,7 @@ const HotelzimmerForm = ({ zimmer, setZimmer, onSubmit, error, showDeleteButton,
         </select>
       </div>
 
+         {/* Select whether the Room has a Minibar or not */}
       <div className="mb-6">
         <label className="block mb-2 text-sm font-medium text-gray-900">Minibar?</label>
         <div className="flex gap-4 justify-between">
@@ -54,6 +61,7 @@ const HotelzimmerForm = ({ zimmer, setZimmer, onSubmit, error, showDeleteButton,
         </div>
       </div>
 
+         {/* Select whether the Room is occupied or not */}
       <div className="mb-6">
         <label className="block mb-2 text-sm font-medium text-gray-900">Besetzt?</label>
         <div className="flex gap-4 justify-between">
@@ -74,6 +82,7 @@ const HotelzimmerForm = ({ zimmer, setZimmer, onSubmit, error, showDeleteButton,
         </div>
       </div>
 
+ {/* Delete and Submit Button, Delete button is only visible when editing a room */}
       <div className="flex justify-between">
         {showDeleteButton && (
           <button onClick={onDelete}
